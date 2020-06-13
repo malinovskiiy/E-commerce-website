@@ -1,0 +1,18 @@
+product table
+
+1. product_id(like SKU)
+2. product_name
+3. product_price
+4. product_brand
+5. product_image
+6. product_color
+7. product_info
+
+
+db connection
+
+1. create DBController.php
+2. create functions.php
+3. require DBController.php in functions.php
+4. in functions.php create db object based on DBController.php
+
