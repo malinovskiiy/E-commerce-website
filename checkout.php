@@ -24,7 +24,7 @@
                     <div class="checkout-content">
                         <a href="#" class="content-btn">Click Here To Login</a>
                     </div>
-                    <h4>Biiling Details</h4>
+                    <h4>Billing Details</h4>
                     <div class="row">
                         <div class="col-lg-6">
                             <label for="fir">First Name<span>*</span></label>

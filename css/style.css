@@ -464,7 +464,7 @@ ol {
 }
 
 .inner-header .advanced-search .input-group {
-	max-width: 70%;
+
 	height: 100%;
 }
 
@@ -3909,7 +3909,7 @@ ol {
 		max-width: 36%;
 	}
 	.inner-header .advanced-search .input-group {
-		max-width: 64%;
+		
 	}
 	.nav-item .nav-menu li a {
 		padding: 16px 26px 15px;
@@ -4018,7 +4018,7 @@ ol {
 		padding-right: 25px;
 	}
 	.inner-header .advanced-search .input-group {
-		max-width: 60%;
+		
 	}
 	.inner-header .nav-right li {
 		margin-left: 8px;
