@@ -14,5 +14,5 @@ db connection
 1. create DBController.php
 2. create functions.php
 3. require DBController.php in functions.php
-4. in functions.php create db object based on DBController.php
+4. in functions.php create db object based on DBController.phpbnmbnmbnmbnm
 
