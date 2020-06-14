@@ -1,8 +1,8 @@
-<?php 
+<?php
 $product_array = $product->getDataFromTable('product');
 $women_array = [];
-foreach ($product_array as $product){
-    if($product['product_category'] == 'Women'){
+foreach ($product_array as $product) {
+    if ($product['product_category'] == 'Women') {
         $women_array[] = $product;
     }
 }
@@ -27,11 +27,11 @@ foreach ($product_array as $product){
                     </ul>
                 </div>
                 <div class="product-slider owl-carousel">
-                    <?php foreach($women_array as $item): ?>
+                    <?php foreach ($women_array as $item) : ?>
                         <div class="product-item">
                             <div class="pi-pic">
-                                <img src="<?php echo $item['product_image'] ?>" alt="">
-                                <?php if($item['product_price'] < 20): ?>
+                                <a href="<?php printf('./%s?product_id=%s', 'product.php', $item['product_id']); ?>"><img src="<?php echo $item['product_image'] ?>" alt=""></a>
+                                <?php if ($item['product_price'] < 20) : ?>
                                     <div class="sale">Sale</div>
                                 <?php endif; ?>
                                 <div class="icon">
@@ -49,7 +49,7 @@ foreach ($product_array as $product){
                                     <h5><?php echo $item['product_name'] ?></h5>
                                 </a>
                                 <div class="product-price">
-                                    $<?php echo $item['product_price'] ?>  
+                                    $<?php echo $item['product_price'] ?>
                                 </div>
                             </div>
                         </div>

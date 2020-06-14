@@ -20,7 +20,7 @@ foreach($product->getDataFromTable('product') as $item){
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
-                    <a href="#"><i class="fa fa-home"></i> Home</a>
+                    <a href="./index.php"><i class="fa fa-home"></i> Home</a>
                     <a href="#">Collection</a>
                     <span>Men</span>
                 </div>

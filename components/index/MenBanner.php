@@ -1,8 +1,8 @@
-<?php 
+<?php
 $men_array = [];
 
-foreach($product_array as $product){
-    if($product['product_category'] == 'Men'){
+foreach ($product_array as $product) {
+    if ($product['product_category'] == 'Men') {
         $men_array[] = $product;
     }
 }
@@ -23,11 +23,11 @@ foreach($product_array as $product){
                     </ul>
                 </div>
                 <div class="product-slider owl-carousel">
-                    <?php foreach($men_array as $item): ?>
+                    <?php foreach ($men_array as $item) : ?>
                         <div class="product-item">
                             <div class="pi-pic">
-                                <img src="<?php echo $item['product_image'] ?>" alt="">
-                                <?php if ($item['product_price'] < 20): ?>
+                                <a href="<?php printf('./%s?product_id=%s', 'product.php', $item['product_id']); ?>"> <img src="<?php echo $item['product_image'] ?>" alt=""></a>
+                                <?php if ($item['product_price'] < 20) : ?>
                                     <div class="sale">Sale</div>
                                 <?php endif; ?>
                                 <div class="icon">
@@ -46,11 +46,11 @@ foreach($product_array as $product){
                                 </a>
                                 <div class="product-price">
                                     $<?php echo $item['product_price'] ?>
-                                    
+
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach; ?>              
+                    <?php endforeach; ?>
                 </div>
             </div>
             <div class="col-lg-3 offset-lg-1">

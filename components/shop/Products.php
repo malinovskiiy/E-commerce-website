@@ -22,7 +22,7 @@ $product_array = $product->getDataFromTable('product');
                 <div class="col-lg-4 col-sm-6 grid-item <?php echo $item['product_brand'] ?> <?php echo $item['product_category'] ?> <?php echo $item['product_color'] ?>">
                     <div class="product-item">
                         <div class="pi-pic">
-                            <img src="<?php echo $item['product_image']; ?>" alt="">
+                            <a href="<?php printf('./%s?product_id=%s','product.php', $item['product_id']); ?>">  <img src="<?php echo $item['product_image']; ?>" alt=""></a> 
                             <?php if ($item['product_price'] < 40) : ?>
                                 <div class="sale pp-sale">Sale</div>
                             <?php endif; ?>
