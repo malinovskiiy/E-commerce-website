@@ -16,6 +16,11 @@
 <?php
 $product_id = $_GET['product_id'];
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $Cart->addToCart($_POST['user_id'], $_POST['product_id']);
+}
+
 foreach ($product->getDataFromTable('product') as $item) :
     if ($item['product_id'] == $product_id) :
 ?>
@@ -65,7 +70,12 @@ foreach ($product->getDataFromTable('product') as $item) :
                                         <div class="pro-qty">
                                             <input type="text" value="1">
                                         </div>
-                                        <a href="#" class="primary-btn pd-cart">Add To Cart</a>
+                                        <form method="post">
+                                            <input type="hidden" name="product_id" value="<?php echo $item['product_id']; ?>">
+                                            <input type="hidden" name="user_id" value="2">
+                                            <a href="#" style="cursor: pointer;" onclick="this.parentNode.submit();" name="product_add_to_cart" class="primary-btn pd-cart">Add To Cart</a>
+                                        </form>
+                                        <!-- <a href="#" class="primary-btn pd-cart">Add To Cart</a> -->
                                     </div>
                                     <ul class="pd-tags">
                                         <li><span>CATEGORIES</span>: <?php echo $item['product_category']; ?></li>

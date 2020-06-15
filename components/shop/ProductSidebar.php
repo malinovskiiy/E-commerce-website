@@ -1,9 +1,5 @@
 <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 products-sidebar-filter">
     <div class="filter-widget">
-        <!-- <div class="d-flex justify-content-between align-items-baseline">
-            <h4 class="fw-title">Categories</h4>
-            <a href="./shop.php" class="btn btn-sm btn-info filter-all">Remove filters</a>
-        </div> -->
         <h4 class="fw-title">Categories</h4>
         <ul class="filter-catagories button-group" data-filter-group="category">
             <button data-filter="*" class="btn btn-light ">All categories</button>

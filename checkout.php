@@ -35,7 +35,7 @@
                             <input type="text" id="last">
                         </div>
                         <div class="col-lg-12">
-                            <label for="cun-name">Company Name</label>
+                            <label for="cun-name">Company Name (if company)</label>
                             <input type="text" id="cun-name">
                         </div>
                         <div class="col-lg-12">
@@ -45,7 +45,6 @@
                         <div class="col-lg-12">
                             <label for="street">Street Address<span>*</span></label>
                             <input type="text" id="street" class="street-first">
-                            <input type="text">
                         </div>
                         <div class="col-lg-12">
                             <label for="zip">Postcode / ZIP (optional)</label>

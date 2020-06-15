@@ -3,6 +3,7 @@
 // Require database connection 
 require './database/DBController.php';
 require './database/Product.php';
+require './database/Cart.php';
 
 // DBController object
 $db = new DBController(); 
@@ -10,11 +11,5 @@ $db = new DBController();
 // Product object
 $product = new Product($db);
 
-
-// Test if data fetched or not
-
-// print_r('<pre>');
-// print_r($product->getDataFromTable('product'));
-// print_r('</pre>');
-
-// End test
+// Cart object0
+$Cart = new Cart($db);

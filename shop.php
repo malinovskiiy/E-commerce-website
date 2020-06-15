@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php include './header.php'; ?>
 
 <!-- Breadcrumb Section Begin -->

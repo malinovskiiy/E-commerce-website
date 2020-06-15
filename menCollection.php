@@ -1,8 +1,10 @@
-<?php include './header.php'; ?>
+<?php 
+ob_start();
+include './header.php'; ?>
 
 <?php 
 // Gender indicator 
-$gender = 'Men';
+$category = 'Men';
 
 // Fetch all products
 $collection_items = [];

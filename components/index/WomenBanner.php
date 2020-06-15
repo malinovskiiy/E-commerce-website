@@ -6,6 +6,11 @@ foreach ($product_array as $product) {
         $women_array[] = $product;
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $Cart->addToCart($_POST['user_id'], $_POST['product_id']);
+}
 ?>
 <!-- Women Banner Section Begin -->
 <section class="women-banner spad">
@@ -38,7 +43,11 @@ foreach ($product_array as $product) {
                                     <i class="icon_heart_alt"></i>
                                 </div>
                                 <ul>
-                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                    <li class="w-icon active"> <form method="post">
+                                            <input type="hidden" name="product_id" value="<?php echo $item['product_id']; ?>">
+                                            <input type="hidden" name="user_id" value="2">
+                                            <a href="#" style="cursor: pointer;" onclick="this.parentNode.submit();" name="product_add_to_cart"><i class="icon_bag_alt"></i></a>
+                                        </form></li>
                                     <li class="quick-view"><a href="#">+ Quick View</a></li>
                                     <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                 </ul>

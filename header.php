@@ -23,8 +23,8 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <?php
-        // Require all functions(database, etc.)
-        require './functions.php';
+    // Require all functions(database, etc.)
+    require './functions.php';
     ?>
 </head>
 
@@ -86,50 +86,44 @@
                             </li>
                             <li class="cart-icon"><a href="./cart.php">
                                     <i class="icon_bag_alt"></i>
-                                    <span>3</span>
+                                    <span><?php echo count($product->getDataFromTable('cart')) ?></span>
                                 </a>
                                 <div class="cart-hover">
                                     <div class="select-items">
                                         <table>
                                             <tbody>
-                                                <tr>
-                                                    <td class="si-pic"><img src="img/select-product-1.jpg" alt=""></td>
-                                                    <td class="si-text">
-                                                        <div class="product-selected">
-                                                            <p>$60.00 x 1</p>
-                                                            <h6>Kabino Bedside Table</h6>
-                                                        </div>
-                                                    </td>
-                                                    <td class="si-close">
-                                                        <i class="ti-close"></i>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="si-pic"><img src="img/select-product-2.jpg" alt=""></td>
-                                                    <td class="si-text">
-                                                        <div class="product-selected">
-                                                            <p>$60.00 x 1</p>
-                                                            <h6>Kabino Bedside Table</h6>
-                                                        </div>
-                                                    </td>
-                                                    <td class="si-close">
-                                                        <i class="ti-close"></i>
-                                                    </td>
-                                                </tr>
+                                                <?php foreach ($product->getDataFromTable('cart') as $item) :
+                                                    $cart = $product->getProductById($item['product_id']);
+                                                    $subtotalPopup[] = array_map(function ($item) { ?>
+                                                        <tr>
+                                                            <td class="si-pic"><img src="<?php echo $item['product_image'] ?>" alt=""></td>
+                                                            <td class="si-text">
+                                                                <div class="product-selected">
+                                                                    <p>$<?php echo $item['product_price'] ?> x 1</p>
+                                                                    <h6><?php echo $item['product_name'] ?></h6>
+                                                                </div>
+                                                            </td>
+                                                            <td class="si-close">
+                                                                <i class="ti-close"></i>
+                                                            </td>
+                                                        </tr>
+                                                <?php
+                                                    return $item['product_price'];}, $cart);
+                                                endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="select-total">
-                                        <span>total:</span>
-                                        <h5>$120.00</h5>
+                                        <span>total (<?php echo isset($subtotalPopup) ? count($subtotalPopup) : 0; ?> items):</span>
+                                        <h5>$<?php echo isset($subtotalPopup) ? $Cart->calculateSubtotal($subtotalPopup) : 0 ?></h5>
                                     </div>
                                     <div class="select-button">
-                                        <a href="#" class="primary-btn view-card">VIEW CARD</a>
-                                        <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
+                                        <a href="./cart.php" class="primary-btn view-card">VIEW CART</a>
+                                        <a href="./checkout.php" class="primary-btn checkout-btn">CHECK OUT</a>
                                     </div>
                                 </div>
                             </li>
-                            <li class="cart-price">$150.00</li>
+                            <li class="cart-price">$<?php echo isset($subtotalPopup) ? $Cart->calculateSubtotal($subtotalPopup) : 0 ?></li>
                         </ul>
                     </div>
                 </div>

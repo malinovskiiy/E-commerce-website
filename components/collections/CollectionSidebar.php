@@ -1,6 +1,6 @@
 <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 products-sidebar-filter">
     <div class="filter-widget">
-        <h4 class="fw-title">For <?php echo $gender ?? 'null'; ?></h4> 
+        <h4 class="fw-title">For <?php echo $category ?? 'null'; ?></h4> 
     </div>
     <div class="filter-widget">
         <h4 class="fw-title">Brand</h4>
