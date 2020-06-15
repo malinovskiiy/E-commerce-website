@@ -74,4 +74,14 @@ class Cart
             return $result;
         }
     }
+
+    public function getCartId($cartArray = null, $key = 'product_id'){
+        if($cartArray != null){
+            $cart_id = array_map(function($value) use ($key) {
+                return $value[$key];
+            }, $cartArray);
+        }
+
+        return $cart_id;
+    }
 }

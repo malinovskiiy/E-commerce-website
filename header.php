@@ -88,7 +88,7 @@
                                     <i class="icon_bag_alt"></i>
                                     <span><?php echo count($product->getDataFromTable('cart')) ?></span>
                                 </a>
-                                <div class="cart-hover">
+                                <!-- <div class="cart-hover">
                                     <div class="select-items">
                                         <table>
                                             <tbody>
@@ -104,24 +104,33 @@
                                                                 </div>
                                                             </td>
                                                             <td class="si-close">
-                                                                <i class="ti-close"></i>
+                                                                <form method="post">
+                                                                    <input type="hidden" value="<?php echo $item['product_id']; ?>" name="product_id_popup">
+                                                                    <button type="submit" class="bg-transparent border-0" name="delete-item-submit-popup"><i class="ti-close"></i></button> </form>
                                                             </td>
                                                         </tr>
                                                 <?php
-                                                    return $item['product_price'];}, $cart);
+                                                        return $item['product_price'];
+                                                    }, $cart);
                                                 endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="select-total">
                                         <span>total (<?php echo isset($subtotalPopup) ? count($subtotalPopup) : 0; ?> items):</span>
-                                        <h5>$<?php echo isset($subtotalPopup) ? $Cart->calculateSubtotal($subtotalPopup) : 0 ?></h5>
+                                        <h5>
+                                            <span>$</span>
+                                            <span class="deal-price">
+                                                <?php echo isset($subtotalPopup) ? $Cart->calculateSubtotal($subtotalPopup) : 0 ?>
+                                            </span>
+
+                                        </h5>
                                     </div>
                                     <div class="select-button">
                                         <a href="./cart.php" class="primary-btn view-card">VIEW CART</a>
                                         <a href="./checkout.php" class="primary-btn checkout-btn">CHECK OUT</a>
                                     </div>
-                                </div>
+                                </div> -->
                             </li>
                             <li class="cart-price">$<?php echo isset($subtotalPopup) ? $Cart->calculateSubtotal($subtotalPopup) : 0 ?></li>
                         </ul>

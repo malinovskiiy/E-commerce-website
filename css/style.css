@@ -2298,6 +2298,7 @@ ol {
 	line-height: 38px;
 	cursor: pointer;
 	width: 18px;
+	user-select: none
 }
 
 .product-details .quantity .pro-qty .qtybtn.dec {

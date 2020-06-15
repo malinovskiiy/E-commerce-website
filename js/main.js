@@ -55,7 +55,7 @@
     /*------------------
         Product Slider
     --------------------*/
-   $(".product-slider").owlCarousel({
+    $(".product-slider").owlCarousel({
         loop: true,
         margin: 25,
         nav: true,
@@ -119,17 +119,17 @@
         autoHeight: false,
         autoplay: true,
     });
-    
+
     /*------------------
         CountDown
     --------------------*/
     // For demo preview
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var mm = String(today.getMonth()).padStart(2, '0');
     var yyyy = today.getFullYear();
 
-    if(mm == 12) {
+    if (mm == 12) {
         mm = '01';
         yyyy = yyyy + 1;
     } else {
@@ -140,60 +140,66 @@
     // For demo preview end
 
     console.log(timerdate);
-    
+
 
     // Use this for real timer date
     /* var timerdate = "2020/01/01"; */
 
-	$("#countdown").countdown(timerdate, function(event) {
+    $("#countdown").countdown(timerdate, function (event) {
         $(this).html(event.strftime("<div class='cd-item'><span>%D</span> <p>Days</p> </div>" + "<div class='cd-item'><span>%H</span> <p>Hrs</p> </div>" + "<div class='cd-item'><span>%M</span> <p>Mins</p> </div>" + "<div class='cd-item'><span>%S</span> <p>Secs</p> </div>"));
     });
 
-        
+
     /*----------------------------------------------------
      Language Flag js 
     ----------------------------------------------------*/
-    $(document).ready(function(e) {
-    //no use
-    try {
-        var pages = $("#pages").msDropdown({on:{change:function(data, ui) {
-            var val = data.value;
-            if(val!="")
-                window.location = val;
-        }}}).data("dd");
+    $(document).ready(function (e) {
+        //no use
+        try {
+            var pages = $("#pages").msDropdown({
+                on: {
+                    change: function (data, ui) {
+                        var val = data.value;
+                        if (val != "")
+                            window.location = val;
+                    }
+                }
+            }).data("dd");
 
-        var pagename = document.location.pathname.toString();
-        pagename = pagename.split("/");
-        pages.setIndexByValue(pagename[pagename.length-1]);
+            var pagename = document.location.pathname.toString();
+            pagename = pagename.split("/");
+            pages.setIndexByValue(pagename[pagename.length - 1]);
+            $("#ver").html(msBeautify.version.msDropdown);
+        } catch (e) {
+            // console.log(e);
+        }
         $("#ver").html(msBeautify.version.msDropdown);
-    } catch(e) {
-        // console.log(e);
-    }
-    $("#ver").html(msBeautify.version.msDropdown);
 
-    //convert
-    $(".language_drop").msDropdown({roundedBorder:false});
+        //convert
+        $(".language_drop").msDropdown({
+            roundedBorder: false
+        });
         $("#tech").data("dd");
     });
     /*-------------------
 		Range Slider
 	--------------------- */
-	var rangeSlider = $(".price-range"),
-		minamount = $("#minamount"),
-		maxamount = $("#maxamount"),
-		minPrice = rangeSlider.data('min'),
-		maxPrice = rangeSlider.data('max');
-	    rangeSlider.slider({
-		range: true,
-		min: minPrice,
+    var rangeSlider = $(".price-range"),
+        minamount = $("#minamount"),
+        maxamount = $("#maxamount"),
+        minPrice = rangeSlider.data('min'),
+        maxPrice = rangeSlider.data('max');
+    rangeSlider.slider({
+        range: true,
+        min: minPrice,
         max: maxPrice,
-		values: [minPrice, maxPrice],
-		slide: function (event, ui) {
-			minamount.val('$' + ui.values[0]);
-			maxamount.val('$' + ui.values[1]);
-		}
-	});
-	minamount.val('$' + rangeSlider.slider("values", 0));
+        values: [minPrice, maxPrice],
+        slide: function (event, ui) {
+            minamount.val('$' + ui.values[0]);
+            maxamount.val('$' + ui.values[1]);
+        }
+    });
+    minamount.val('$' + rangeSlider.slider("values", 0));
     maxamount.val('$' + rangeSlider.slider("values", 1));
 
     /*-------------------
@@ -203,7 +209,7 @@
         $(".fw-size-choose .sc-item label, .pd-size-choose .sc-item label").removeClass('active');
         $(this).addClass('active');
     });
-    
+
     /*-------------------
 		Nice Select
     --------------------- */
@@ -212,39 +218,99 @@
     /*------------------
 		Single Product
 	--------------------*/
-	$('.product-thumbs-track .pt').on('click', function(){
-		$('.product-thumbs-track .pt').removeClass('active');
-		$(this).addClass('active');
-		var imgurl = $(this).data('imgbigurl');
-		var bigImg = $('.product-big-img').attr('src');
-		if(imgurl != bigImg) {
-			$('.product-big-img').attr({src: imgurl});
-			$('.zoomImg').attr({src: imgurl});
-		}
-	});
+    $('.product-thumbs-track .pt').on('click', function () {
+        $('.product-thumbs-track .pt').removeClass('active');
+        $(this).addClass('active');
+        var imgurl = $(this).data('imgbigurl');
+        var bigImg = $('.product-big-img').attr('src');
+        if (imgurl != bigImg) {
+            $('.product-big-img').attr({
+                src: imgurl
+            });
+            $('.zoomImg').attr({
+                src: imgurl
+            });
+        }
+    });
 
     $('.product-pic-zoom').zoom();
-    
+
     /*-------------------
 		Quantity change
 	--------------------- */
-    var proQty = $('.pro-qty');
-	proQty.prepend('<span class="dec qtybtn">-</span>');
-	proQty.append('<span class="inc qtybtn">+</span>');
-	proQty.on('click', '.qtybtn', function () {
-		var $button = $(this);
-		var oldValue = $button.parent().find('input').val();
-		if ($button.hasClass('inc')) {
-			var newVal = parseFloat(oldValue) + 1;
-		} else {
-			// Don't allow decrementing below zero
-			if (oldValue > 0) {
-				var newVal = parseFloat(oldValue) - 1;
-			} else {
-				newVal = 0;
-			}
-		}
-		$button.parent().find('input').val(newVal);
-	});
+    let $qty_up = $(".pro-qty .qty-up");
+    let $qty_down = $(".pro-qty .qty-down");
+    let $deal_price = $(".deal-price");
+
+    $qty_up.click(function () {
+
+        let $input = $(`.qty-input[data-id='${$(this).data("id")}']`);
+        let $total_price = $(`.product-total-price[data-id='${$(this).data("id")}']`);
+    
+
+        $.ajax({
+            type: "post",
+            url: "../templates/ajax.php",
+            data: {
+                itemid: $(this).data("id")
+            },
+            success: function (response) {
+                console.log(response);
+                let object = JSON.parse(response);
+                let item_price = object[0]['product_price'];
+
+                if ($input.val() >= 1 && $input.val() <= 9) {
+                    $input.val(function (i, oldval) {
+                        return ++oldval;
+                    });
+                }
+
+                // increase price of product
+                $total_price.text(parseInt(item_price * $input.val()).toFixed(2));
+
+                // set subtotal
+
+                let subtotal = parseInt($deal_price.text()) + parseInt(item_price);
+
+                $deal_price.text(subtotal.toFixed(2));
+            }
+        }); // close ajax
+    });
+
+    $qty_down.click(function () {
+        let $input = $(`.qty-input[data-id='${$(this).data("id")}']`);
+        let $total_price = $(`.product-total-price[data-id='${$(this).data("id")}']`);
+
+        $.ajax({
+            type: "post",
+            url: "../templates/ajax.php",
+            data: {
+                itemid: $(this).data("id")
+            },
+            success: function (response) {
+                console.log(response);
+                let object = JSON.parse(response);
+                let item_price = object[0]['product_price'];
+
+                if ($input.val() > 1 && $input.val() <= 10) {
+                    $input.val(function (i, oldval) {
+                        return --oldval;
+                    });
+                }
+
+                // increase price of product
+                $total_price.text(parseInt(item_price * $input.val()).toFixed(2));
+
+                // set subtotal
+
+                let subtotal = parseInt($deal_price.text()) - parseInt(item_price);
+
+                $deal_price.text(subtotal.toFixed(2));
+            }
+        }); // close ajax
+        
+    });
+
+
 
 })(jQuery);

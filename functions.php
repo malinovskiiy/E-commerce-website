@@ -11,5 +11,8 @@ $db = new DBController();
 // Product object
 $product = new Product($db);
 
-// Cart object0
+$product_array = $product->getDataFromTable('product');
+$cart_array = $product->getDataFromTable('cart');
+
+// Cart object
 $Cart = new Cart($db);

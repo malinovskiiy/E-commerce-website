@@ -35,11 +35,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <form method="post">
                                         <input type="hidden" name="product_id" value="<?php echo $item['product_id']; ?>">
                                         <input type="hidden" name="user_id" value="2">
-                                        <a href="#" style="cursor: pointer;" onclick="this.parentNode.submit();" name="product_add_to_cart"><i class="icon_bag_alt"></i></a>
+                                        <?php
+                                        if (in_array($item['product_id'], $Cart->getCartId($product->getDataFromTable('cart')) ?? [])) {
+                                            echo '<a href="#" style="pointer-events: none; background: green;" onclick="this.parentNode.submit();" name="product_add_to_cart"><i class="icon_bag_alt"></i></a>';
+                                        } else {
+                                            echo '<a href="#" style="cursor: pointer;" onclick="this.parentNode.submit();" name="product_add_to_cart"><i class="icon_bag_alt"></i></a>';
+                                        }
+                                        ?>
                                     </form>
                                 </li>
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                <li class="quick-view"> <?php
+                                        if (in_array($item['product_id'], $Cart->getCartId($product->getDataFromTable('cart')) ?? [])) {
+                                            echo '<a href="#" style="pointer-events: none;">In the cart</a>';
+                                        } else {
+                                            echo '<a href="#">+ Add to cart</a>';
+                                        }
+                                        ?></li>
                             </ul>
                         </div>
                         <div class="pi-text">

@@ -1,11 +1,11 @@
  <?php
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        if(isset($_POST['delete-item-submit'])){
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['delete-item-submit'])) {
             $deletedrecord = $Cart->deleteCartItem($_POST['product_id']);
         }
     }
- ?>
- 
+    ?>
+
  <!-- Shopping Cart Section Begin -->
  <section class="shopping-cart spad">
      <div class="container">
@@ -25,7 +25,6 @@
                          </thead>
                          <tbody>
                              <!-- cart item -->
-
                              <?php
                                 foreach ($product->getDataFromTable('cart') as $item) :
                                     $cart = $product->getProductById($item['product_id']);
@@ -40,15 +39,17 @@
                                          <td class="qua-col first-row">
                                              <div class="quantity">
                                                  <div class="pro-qty">
-                                                     <input type="text" value="1">
+                                                     <button class="qtybtn qty-down bg-transparent border-0" data-id="<?php echo $item['product_id'] ?? '0'; ?>">-</button>
+                                                     <input type="text" class="qty-input" value="1" data-id="<?php echo $item['product_id'] ?? '0'; ?>">
+                                                     <button class="qtybtn qty-up bg-transparent border-0" data-id="<?php echo $item['product_id'] ?? '0'; ?>">+</button>
                                                  </div>
                                              </div>
                                          </td>
-                                         <td class="total-price first-row">$60.00</td>
+                                         <td class="total-price first-row" >$ <span class="product-total-price" data-id="<?php echo $item['product_id'] ?? '0'; ?>"><?php echo $item['product_price']; ?></span></td>
                                          <td class="close-td first-row">
                                              <form method="post">
                                                  <input type="hidden" value="<?php echo $item['product_id']; ?>" name="product_id">
-                                                <button type="submit" class="bg-transparent border-0" name="delete-item-submit"><i class="ti-close"></i></button> </form>
+                                                 <button type="submit" class="bg-transparent border-0" name="delete-item-submit"><i class="ti-close"></i></button> </form>
                                          </td>
                                      </tr>
                              <?php return $item['product_price'];
@@ -76,8 +77,22 @@
                      <div class="col-lg-4 offset-lg-4">
                          <div class="proceed-checkout">
                              <ul>
-                                 <li class="subtotal">Subtotal (<?php echo isset($subtotal) ? count($subtotal) : 0; ?> items) <span>$<?php echo isset($subtotal) ? $Cart->calculateSubtotal($subtotal) : 0 ?></span></li>
-                                 <li class="cart-total">Total <span>$<?php echo isset($subtotal) ? $Cart->calculateSubtotal($subtotal) : 0 ?></span></li>
+                                <li class="subtotal">
+                                    Subtotal (<?php echo isset($subtotal) ? count($subtotal) : 0; ?> items)      
+                                    <span>$
+                                        <span class="deal-price">
+                                            <?php echo isset($subtotal) ? $Cart->calculateSubtotal($subtotal) : 0 ?>
+                                        </span>
+                                    </span>
+                                </li>
+                                 <li class="cart-total">
+                                    Total 
+                                    <span>$
+                                        <span class="deal-price">
+                                            <?php echo isset($subtotal) ? $Cart->calculateSubtotal($subtotal) : 0 ?>
+                                        </span>
+                                    </span>
+                                </li>
                              </ul>
                              <a href="./checkout.php" class="proceed-btn">PROCEED TO CHECK OUT</a>
                          </div>
