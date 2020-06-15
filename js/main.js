@@ -292,6 +292,7 @@
                 let item_price = object[0]['product_price'];
 
                 if ($input.val() > 1 && $input.val() <= 10) {
+                    
                     $input.val(function (i, oldval) {
                         return --oldval;
                     });

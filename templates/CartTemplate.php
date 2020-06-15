@@ -38,7 +38,7 @@
                                          <td class="qua-col first-row">
                                              <div class="quantity">
                                                  <div class="pro-qty">
-                                                     <button class="qtybtn qty-down bg-transparent border-0" data-id="<?php echo $item['product_id'] ?? '0'; ?>">-</button>
+                                                     <button class="  qtybtn qty-down bg-transparent border-0" data-id="<?php echo $item['product_id'] ?? '0'; ?>">-</button>
                                                      <input type="text" class="qty-input" value="1" data-id="<?php echo $item['product_id'] ?? '0'; ?>">
                                                      <button class="qtybtn qty-up bg-transparent border-0" data-id="<?php echo $item['product_id'] ?? '0'; ?>">+</button>
                                                  </div>

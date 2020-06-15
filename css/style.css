@@ -4312,3 +4312,7 @@ ol {
 		padding-right: 15px;
 	}
 }
+
+.non_clickable{
+	pointer-events: none;
+}

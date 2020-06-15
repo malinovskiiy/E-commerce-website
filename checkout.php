@@ -82,11 +82,19 @@
                         <div class="order-total">
                             <ul class="order-table">
                                 <li>Product <span>Total</span></li>
-                                <li class="fw-normal">Combination x 1 <span>$60.00</span></li>
-                                <li class="fw-normal">Combination x 1 <span>$60.00</span></li>
-                                <li class="fw-normal">Combination x 1 <span>$120.00</span></li>
-                                <li class="fw-normal">Subtotal <span>$240.00</span></li>
-                                <li class="total-price">Total <span>$240.00</span></li>
+                                <?php
+                                foreach ($product->getDataFromTable('cart') as $item) :
+                                    $cart = $product->getProductById($item['product_id']);
+                                    array_map(function ($item) {
+                                ?>
+                                        <li class="fw-normal"><?php echo $item['product_name'] ?> x 1 <span>$<?php echo $item['product_price'] ?></span></li>
+                                <?php
+                                    }, $cart);
+
+                                endforeach;
+                                ?>
+                                <li class="fw-normal">Subtotal <span>$<?php echo $_COOKIE['subtotal'] ?? 0; ?></span></li>
+                                <li class="total-price">Total <span>$<?php echo  $_COOKIE['subtotal'] ?? 0; ?></span></li>
                             </ul>
                             <div class="payment-check">
                                 <div class="pc-item">

@@ -45,7 +45,7 @@ class Cart
             $result = $this->insertIntoCart($params);
 
             if ($result) {
-                header("Location: " . $_SERVER['PHP_SELF']);
+                header("Location: " . $_SERVER['PHP_SELF']  . "?product_id={$itemId}");
             }
         }
     }
