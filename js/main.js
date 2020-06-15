@@ -252,9 +252,10 @@
             type: "post",
             url: "../templates/ajax.php",
             data: {
-                itemid: $(this).data("id")
+                itemid: $(this).data("id"),
             },
             success: function (response) {
+                console.log(response);
                 let object = JSON.parse(response);
                 let item_price = object[0]['product_price'];
 
