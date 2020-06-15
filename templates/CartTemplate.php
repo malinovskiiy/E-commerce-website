@@ -5,7 +5,6 @@
         }
     }
     ?>
-
  <!-- Shopping Cart Section Begin -->
  <section class="shopping-cart spad">
      <div class="container">
@@ -64,7 +63,7 @@
                      <div class="col-lg-4">
                          <div class="cart-buttons">
                              <a href="./shop.php" class="primary-btn continue-shop">Continue shopping</a>
-                             <a href="#" class="primary-btn up-cart">Update cart</a>
+                             <a href="./cart.php" class="primary-btn up-cart">Update cart</a>
                          </div>
                          <div class="discount-coupon">
                              <h6>Discount Codes</h6>
@@ -81,7 +80,7 @@
                                     Subtotal (<?php echo isset($subtotal) ? count($subtotal) : 0; ?> items)      
                                     <span>$
                                         <span class="deal-price">
-                                            <?php echo isset($subtotal) ? $Cart->calculateSubtotal($subtotal) : 0 ?>
+                                        <?php echo !empty($_COOKIE) ?  $_COOKIE['subtotal'] : 0; ?>
                                         </span>
                                     </span>
                                 </li>
@@ -89,7 +88,7 @@
                                     Total 
                                     <span>$
                                         <span class="deal-price">
-                                            <?php echo isset($subtotal) ? $Cart->calculateSubtotal($subtotal) : 0 ?>
+                                        <?php echo !empty($_COOKIE) ?  $_COOKIE['subtotal'] : 0; ?>
                                         </span>
                                     </span>
                                 </li>

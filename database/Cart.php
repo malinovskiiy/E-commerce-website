@@ -57,9 +57,9 @@ class Cart
 
             foreach ($arr as $item) {
                 $sum += floatval($item[0]);
+                setcookie('subtotal', sprintf("%.2f", $sum), time() + 3600, '/' );
             }
-
-            return sprintf("%.2f", $sum);
+               
         }
     }
 

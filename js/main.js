@@ -246,7 +246,7 @@
 
         let $input = $(`.qty-input[data-id='${$(this).data("id")}']`);
         let $total_price = $(`.product-total-price[data-id='${$(this).data("id")}']`);
-    
+
 
         $.ajax({
             type: "post",
@@ -255,7 +255,6 @@
                 itemid: $(this).data("id")
             },
             success: function (response) {
-                console.log(response);
                 let object = JSON.parse(response);
                 let item_price = object[0]['product_price'];
 
@@ -288,7 +287,6 @@
                 itemid: $(this).data("id")
             },
             success: function (response) {
-                console.log(response);
                 let object = JSON.parse(response);
                 let item_price = object[0]['product_price'];
 
@@ -308,7 +306,7 @@
                 $deal_price.text(subtotal.toFixed(2));
             }
         }); // close ajax
-        
+
     });
 
 

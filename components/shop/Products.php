@@ -4,6 +4,7 @@ $product_array = $product->getDataFromTable('product');
 // request post
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $Cart->addToCart($_POST['user_id'], $_POST['product_id']);
+    
 }
 ?>
 

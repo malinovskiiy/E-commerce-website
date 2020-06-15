@@ -132,7 +132,7 @@
                                     </div>
                                 </div> -->
                             </li>
-                            <li class="cart-price">$<?php echo isset($subtotalPopup) ? $Cart->calculateSubtotal($subtotalPopup) : 0 ?></li>
+                            <li class="cart-price ">$<span class="deal-price"><?php echo !empty($_COOKIE) ?  $_COOKIE['subtotal'] : 0; ?></span> </li>
                         </ul>
                     </div>
                 </div>
