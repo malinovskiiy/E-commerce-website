@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -49,7 +50,17 @@
                     </div>
                 </div>
                 <div class="ht-right">
-                    <a href="./login.php" class="login-panel"><i class="fa fa-user"></i>Login</a>
+                    <a href="<?php if ($_SESSION['user']) {
+                                    echo './profile.php';
+                                } else {
+                                    echo './login.php';
+                                } ?>" class="login-panel">
+                        <i class="fa fa-user"></i>
+                        <?php if ($_SESSION['user']) {
+                            echo 'Hello, ' . $_SESSION['user']['username'] . ' !';
+                        } else {
+                            echo 'Login';
+                        }  ?></a>
                     <div class="top-social">
                         <a href="#"><i class="ti-facebook"></i></a>
                         <a href="#"><i class="ti-twitter-alt"></i></a>

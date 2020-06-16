@@ -1,4 +1,10 @@
-<?php include './header.php'; ?>
+<?php 
+session_start();
+if($_SESSION['user']){
+    header('Location: ./index.php');
+}
+include './header.php';
+?>
 <!-- Breadcrumb Section Begin -->
 <div class="breacrumb-section">
         <div class="container">
@@ -14,21 +20,23 @@
     </div>
     <!-- Breadcrumb Form Section Begin -->
 
-    <!-- Register Section Begin -->
+    <!-- Login Section Begin -->
     <div class="register-login-section spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="login-form">
                         <h2>Login</h2>
-                        <form action="#">
+                        <?php if($_SESSION['msg']) echo $_SESSION['msg'];
+                        unset($_SESSION['msg']); ?>
+                        <form action="./database/Login.php" method="post">
                             <div class="group-input">
-                                <label for="username">Username or email address *</label>
-                                <input type="text" id="username">
+                                <label for="username">Username *</label>
+                                <input type="text" id="username" name="username">
                             </div>
                             <div class="group-input">
-                                <label for="pass">Password *</label>
-                                <input type="text" id="pass">
+                                <label for="password">Password *</label>
+                                <input type="text" id="password" name="password">
                             </div>
                             <div class="group-input gi-check">
                                 <div class="gi-more">
