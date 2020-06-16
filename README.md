@@ -1,5 +1,5 @@
 # E-commerce-website
-E-commerce website made with pure php
+  E-commerce website made with pure php
 
 # Functionality:
 
@@ -13,5 +13,5 @@ E-commerce website made with pure php
 
 # Get started
 
-First you need a server(Open Server, MAMP, etc.) to execute php scripts
+First you need a server(Open Server, MAMP, etc.) to execute php scripts.
 There are no frameworks so just open index.php file and you are good to go.
