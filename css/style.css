@@ -1218,12 +1218,15 @@ ol {
 	background: #ffffff;
 }
 
-.product-item .pi-pic ul li.w-icon.active a {
+.product-item .pi-pic ul li.w-icon.active button {
 	background: #e7ab3c;
 	color: #ffffff;
 }
 
-.product-item .pi-pic ul li a {
+.product-item .pi-pic ul li button,
+
+.product-item .pi-pic ul li a
+ {
 	font-size: 16px;
 	font-weight: 700;
 	color: #252525;

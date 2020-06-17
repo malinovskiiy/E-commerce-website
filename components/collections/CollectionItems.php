@@ -1,6 +1,8 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $Cart->addToCart($_POST['user_id'], $_POST['product_id']);
+    if (isset($_POST['product_add_to_cart'])) {
+        $Cart->addToCart($_POST['product_id']);
+    }
 }
 ?>
 <div class="col-lg-9 order-1 order-lg-2">
@@ -34,22 +36,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <li class="w-icon active">
                                     <form method="post">
                                         <input type="hidden" name="product_id" value="<?php echo $item['product_id']; ?>">
-                                        <input type="hidden" name="user_id" value="2">
+                                        <button type="submit" class="bg-warning text-white border-0" name="product_add_to_cart"><i class="icon_bag_alt"></i></button>
                                         <?php
-                                        if (in_array($item['product_id'], $Cart->getCartId($product->getDataFromTable('cart')) ?? [])) {
-                                            echo '<a href="#" style="pointer-events: none; background: green;" onclick="this.parentNode.submit();" name="product_add_to_cart"><i class="icon_bag_alt"></i></a>';
-                                        } else {
-                                            echo '<a href="#" style="cursor: pointer;" onclick="this.parentNode.submit();" name="product_add_to_cart"><i class="icon_bag_alt"></i></a>';
-                                        }
+                                        // if (in_array($item['product_id'], $Cart->getCartId($product->getDataFromTable('cart')) ?? [])) {
+                                        //     echo '<a href="#" style="pointer-events: none; background: green;" onclick="this.parentNode.submit();" name="product_add_to_cart"><i class="icon_bag_alt"></i></a>';
+                                        // } else {
+                                        //     echo '<a href="#" style="cursor: pointer;" onclick="this.parentNode.submit();" name="product_add_to_cart"><i class="icon_bag_alt"></i></a>';
+                                        // }
                                         ?>
                                     </form>
                                 </li>
-                                <li class="quick-view"> <?php
-                                        if (in_array($item['product_id'], $Cart->getCartId($product->getDataFromTable('cart')) ?? [])) {
-                                            echo '<a href="#" style="pointer-events: none;">In the cart</a>';
-                                        } else {
-                                            echo '<a href="#">+ Add to cart</a>';
-                                        }
+                                <li class="quick-view">
+                                <a href="#">+ Add to cart</a> <?php
+                                        // if (in_array($item['product_id'], $Cart->getCartId($product->getDataFromTable('cart')) ?? [])) {
+                                        //     echo '<a href="#" style="pointer-events: none;">In the cart</a>';
+                                        // } else {
+                                        //     echo '<a href="#">+ Add to cart</a>';
+                                        // }
                                         ?></li>
                             </ul>
                         </div>

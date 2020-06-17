@@ -20,7 +20,7 @@ if(mysqli_num_rows($check_user) > 0) {
     $_SESSION['user'] = [
         "id" => $user['id'],
         "username" => $user['username'],
-        "email" => $user['email']
+        "email" => $user['email'],
     ];
 
     header('Location: ../profile.php');

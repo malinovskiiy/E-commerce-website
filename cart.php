@@ -1,5 +1,10 @@
 <?php ob_start(); ?>
 <?php 
+
+session_start(); 
+
+?>
+<?php 
 include './header.php'; ?>
 <!-- Breadcrumb Section Begin -->
 <div class="breacrumb-section">

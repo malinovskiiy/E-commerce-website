@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php 
+    session_start();
+    // print_r('<pre>');
+    // print_r($_SESSION);
+    // print_r('</pre>');
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -97,53 +102,11 @@
                             </li>
                             <li class="cart-icon"><a href="./cart.php">
                                     <i class="icon_bag_alt"></i>
-                                    <span><?php echo count($product->getDataFromTable('cart')) ?></span>
+                                    <span>
+                                        <?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0?></span>
                                 </a>
-                                <!-- <div class="cart-hover">
-                                    <div class="select-items">
-                                        <table>
-                                            <tbody>
-                                                <?php foreach ($product->getDataFromTable('cart') as $item) :
-                                                    $cart = $product->getProductById($item['product_id']);
-                                                    $subtotalPopup[] = array_map(function ($item) { ?>
-                                                        <tr>
-                                                            <td class="si-pic"><img src="<?php echo $item['product_image'] ?>" alt=""></td>
-                                                            <td class="si-text">
-                                                                <div class="product-selected">
-                                                                    <p>$<?php echo $item['product_price'] ?> x 1</p>
-                                                                    <h6><?php echo $item['product_name'] ?></h6>
-                                                                </div>
-                                                            </td>
-                                                            <td class="si-close">
-                                                                <form method="post">
-                                                                    <input type="hidden" value="<?php echo $item['product_id']; ?>" name="product_id_popup">
-                                                                    <button type="submit" class="bg-transparent border-0" name="delete-item-submit-popup"><i class="ti-close"></i></button> </form>
-                                                            </td>
-                                                        </tr>
-                                                <?php
-                                                        return $item['product_price'];
-                                                    }, $cart);
-                                                endforeach; ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="select-total">
-                                        <span>total (<?php echo isset($subtotalPopup) ? count($subtotalPopup) : 0; ?> items):</span>
-                                        <h5>
-                                            <span>$</span>
-                                            <span class="deal-price">
-                                                <?php echo isset($subtotalPopup) ? $Cart->calculateSubtotal($subtotalPopup) : 0 ?>
-                                            </span>
-
-                                        </h5>
-                                    </div>
-                                    <div class="select-button">
-                                        <a href="./cart.php" class="primary-btn view-card">VIEW CART</a>
-                                        <a href="./checkout.php" class="primary-btn checkout-btn">CHECK OUT</a>
-                                    </div>
-                                </div> -->
                             </li>
-                            <li class="cart-price ">$<span class="deal-price"><?php echo !empty($_COOKIE) ?  $_COOKIE['subtotal'] : 0; ?></span> </li>
+                            <li class="cart-price ">$<span class="deal-price"><?php echo $_SESSION['subtotal'] ?? 0; ?></span> </li>
                         </ul>
                     </div>
                 </div>

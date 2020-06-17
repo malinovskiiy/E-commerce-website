@@ -36,7 +36,7 @@ include './header.php';
                             </div>
                             <div class="group-input">
                                 <label for="password">Password *</label>
-                                <input type="text" id="password" name="password">
+                                <input type="password" id="password" name="password">
                             </div>
                             <div class="group-input gi-check">
                                 <div class="gi-more">

@@ -1,7 +1,14 @@
  <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_POST['delete-item-submit'])) {
-            $deletedrecord = $Cart->deleteCartItem($_POST['product_id']);
+            // Function doesn't work so i decided to do it right here
+            // And it's working!
+            //
+            // We search in session 'cart' array index of product what we want to delete
+            // and delete it from session 'cart' array using unset()
+            // after that redirect
+            unset($_SESSION['cart'][array_search($_POST['product_id'], $_SESSION['cart'])]);
+            header('Location: ' . $_SERVER['PHP_SELF']);
         }
     }
     ?>
@@ -25,37 +32,32 @@
                          <tbody>
                              <!-- cart item -->
                              <?php
-                                foreach ($product->getDataFromTable('cart') as $item) :
-                                    $cart = $product->getProductById($item['product_id']);
-                                    $subtotal[] = array_map(function ($item) {
+                                foreach ($_SESSION['cart'] as $item) :
+                                    $cart = $product->getProductById($item);
                                 ?>
                                      <tr>
-                                         <td class="cart-pic first-row"><img src="<?php echo $item['product_image']; ?>" alt=""></td>
+                                         <td class="cart-pic first-row"><img src="<?php echo $cart[0]['product_image']; ?>" alt=""></td>
                                          <td class="cart-title first-row">
-                                             <h5 style="margin-left: 1em;"><?php echo $item['product_name']; ?></h5>
+                                             <h5 style="margin-left: 1em;"><?php echo $cart[0]['product_name']; ?></h5>
                                          </td>
-                                         <td class="p-price first-row">$<?php echo $item['product_price']; ?></td>
+                                         <td class="p-price first-row">$<?php echo $cart[0]['product_price']; ?></td>
                                          <td class="qua-col first-row">
                                              <div class="quantity">
                                                  <div class="pro-qty">
-                                                     <button class="  qtybtn qty-down bg-transparent border-0" data-id="<?php echo $item['product_id'] ?? '0'; ?>">-</button>
-                                                     <input type="text" class="qty-input" value="1" data-id="<?php echo $item['product_id'] ?? '0'; ?>">
-                                                     <button class="qtybtn qty-up bg-transparent border-0" data-id="<?php echo $item['product_id'] ?? '0'; ?>">+</button>
+                                                     <button class="  qtybtn qty-down bg-transparent border-0" data-id="<?php echo $cart[0]['product_id'] ?? '0'; ?>">-</button>
+                                                     <input type="text" class="qty-input" value="1" data-id="<?php echo $cart[0]['product_id'] ?? '0'; ?>">
+                                                     <button class="qtybtn qty-up bg-transparent border-0" data-id="<?php echo $cart[0]['product_id'] ?? '0'; ?>">+</button>
                                                  </div>
                                              </div>
                                          </td>
-                                         <td class="total-price first-row" >$ <span class="product-total-price" data-id="<?php echo $item['product_id'] ?? '0'; ?>"><?php echo $item['product_price']; ?></span></td>
+                                         <td class="total-price first-row" >$ <span class="product-total-price" data-id="<?php echo $cart[0]['product_id'] ?? '0'; ?>"><?php echo $cart[0]['product_price']; ?></span></td>
                                          <td class="close-td first-row">
                                              <form method="post">
-                                                 <input type="hidden" value="<?php echo $item['product_id']; ?>" name="product_id">
+                                                 <input type="hidden" value="<?php echo $cart[0]['product_id']; ?>" name="product_id">
                                                  <button type="submit" class="bg-transparent border-0" name="delete-item-submit"><i class="ti-close"></i></button> </form>
                                          </td>
                                      </tr>
-                             <?php return $item['product_price'];
-                                    }, $cart);
-
-                                endforeach;
-                                ?>
+                             <?php endforeach; ?>
                          </tbody>
                      </table>
                  </div>
@@ -77,10 +79,10 @@
                          <div class="proceed-checkout">
                              <ul>
                                 <li class="subtotal">
-                                    Subtotal (<?php echo isset($subtotal) ? count($subtotal) : 0; ?> items)      
+                                    Subtotal (<?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0; ?> items)      
                                     <span>$
                                         <span class="deal-price">
-                                        <?php echo !empty($_COOKIE) ?  $_COOKIE['subtotal'] : 0; ?>
+                                        <?php echo $_SESSION['subtotal'] ?? 0; ?>
                                         </span>
                                     </span>
                                 </li>
@@ -88,7 +90,7 @@
                                     Total 
                                     <span>$
                                         <span class="deal-price">
-                                        <?php echo !empty($_COOKIE) ?  $_COOKIE['subtotal'] : 0; ?>
+                                        <?php echo $_SESSION['subtotal'] ?? 0; ?>
                                         </span>
                                     </span>
                                 </li>
