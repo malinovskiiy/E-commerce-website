@@ -10,6 +10,9 @@
 * Calculate subtotal
 * Add some amount of products(2 or 3 etc.)
 
+Recently added feature of register and login using sessions
+
+
 
 # Get started
 
