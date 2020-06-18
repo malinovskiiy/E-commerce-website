@@ -19,6 +19,7 @@ $product_id = $_GET['product_id'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $Cart->addToCart($_POST['product_id']);
+    header('Location: ' . $_SERVER['PHP_SELF'] . "?product_id={$_POST['product_id']}" );
 }
 
 foreach ($product->getDataFromTable('product') as $item) :
@@ -67,14 +68,13 @@ foreach ($product->getDataFromTable('product') as $item) :
                                         </div>
                                     </div>
                                     <div class="quantity">
-                                        <div class="pro-qty">
-                                            <button class=" qtybtn qty-down bg-transparent border-0" data-id="<?php echo $item['product_id'] ?? '0'; ?>">-</button>
+                                        <!-- <div class="pro-qty">
+                                            <button class=" qtybtn qty-down bg-transparent border-0" data-id="<?php //echo $item['product_id'] ?? '0'; ?>">-</button>
                                             <input type="text" value="1">
-                                            <button class="qtybtn qty-up bg-transparent border-0" data-id="<?php echo $item['product_id'] ?? '0'; ?>">+</button>
-                                        </div>
+                                            <button class="qtybtn qty-up bg-transparent border-0" data-id="<?php // echo $item['product_id'] ?? '0'; ?>">+</button>
+                                        </div> -->
                                         <form method="post">
                                             <input type="hidden" name="product_id" value="<?php echo $item['product_id']; ?>">
-                                            <input type="hidden" name="user_id" value="2">
                                             <?php
                                             //if (in_array($item['product_id'], $Cart->getCartId($product->getDataFromTable('cart')) ?? [])) {
                                               //  echo '<a href="#" style="pointer-events: none; background: green" onclick="this.parentNode.submit();" name="product_add_to_cart" class="primary-btn pd-cart">In the cart</a>';

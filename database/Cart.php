@@ -48,8 +48,9 @@ class Cart
 
             foreach ($arr as $item) {
                 $sum += floatval($item[0]);
-                $_SESSION['subtotal'] = sprintf("%.2f", $sum);
             }
+            
+            return sprintf("%.2f", $sum);
         }
     }
 
