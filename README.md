@@ -10,7 +10,7 @@
 * Adding product to the cart (using php sessions)
 * Login and Authentication system
 * Checkout fuhnctionality(which data will affect email invoice)
-* Sending responsive multibrowser custom html invoice(If you look on code of this email... You would be probably scared), 
+* Sending responsive multibrowser custom html email invoice(If you look on code of this email... You would be probably scared), 
   which based on cart items
 
 
