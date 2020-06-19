@@ -18,51 +18,64 @@
 <!-- Shopping Cart Section Begin -->
 <section class="checkout-section spad">
     <div class="container">
-        <form action="#" class="checkout-form">
+        <form action="./mail/SendMail.php" class="checkout-form" method="post">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="checkout-content">
-                        <a href="#" class="content-btn">Click Here To Login</a>
+                        <a href="./login.php" class="content-btn">
+                            <?php 
+                                if($_SESSION['user']){
+                                    echo "You are logged in as {$_SESSION['user']['username']} !";
+                                } else {
+                                    echo "Click Here To Login";
+                                }   
+                            ?>
+                            
+                        </a>
                     </div>
                     <h4>Billing Details</h4>
                     <div class="row">
-                        <div class="col-lg-6">
-                            <label for="fir">First Name<span>*</span></label>
-                            <input type="text" id="fir">
-                        </div>
-                        <div class="col-lg-6">
-                            <label for="last">Last Name<span>*</span></label>
-                            <input type="text" id="last">
+                        <div class="col-lg-12">
+                            <label for="first">Name <span>*</span></label>
+                            <input type="text" id="first" name="name" value="
+                            <?php 
+                                if(isset($_SESSION['user'])){
+                                    echo trim($_SESSION['user']['username']);
+                                } else {
+                                    echo '';
+                                }
+                            ?>
+                            ">
                         </div>
                         <div class="col-lg-12">
-                            <label for="cun-name">Company Name (if company)</label>
-                            <input type="text" id="cun-name">
+                            <label for="cun">Country <span>*</span></label>
+                            <input type="text" id="cun" name="country">
                         </div>
                         <div class="col-lg-12">
-                            <label for="cun">Country<span>*</span></label>
-                            <input type="text" id="cun">
+                            <label for="street">Street Address <span>*</span></label>
+                            <input type="text" id="street" name="street">
                         </div>
                         <div class="col-lg-12">
-                            <label for="street">Street Address<span>*</span></label>
-                            <input type="text" id="street" class="street-first">
-                        </div>
-                        <div class="col-lg-12">
-                            <label for="zip">Postcode / ZIP (optional)</label>
-                            <input type="text" id="zip">
+                            <label for="zip">Postcode / ZIP <span>*</span></label>
+                            <input type="text" id="zip" name="postcode">
                         </div>
                         <div class="col-lg-12">
                             <label for="town">Town / City<span>*</span></label>
-                            <input type="text" id="town">
-                        </div>
-                        <div class="col-lg-6">
-                            <label for="email">Email Address<span>*</span></label>
-                            <input type="text" id="email">
-                        </div>
-                        <div class="col-lg-6">
-                            <label for="phone">Phone<span>*</span></label>
-                            <input type="text" id="phone">
+                            <input type="text" id="town" name="city">
                         </div>
                         <div class="col-lg-12">
+                            <label for="email">Email Address<span>*</span></label>
+                            <input type="text" id="email" name="email" value="
+                            <?php 
+                                if(isset($_SESSION['user'])){
+                                    echo trim($_SESSION['user']['email']);
+                                } else {
+                                    echo '';
+                                }
+                            ?>
+                            ">
+                        </div>
+                        <!-- <div class="col-lg-12">
                             <div class="create-item">
                                 <label for="acc-create">
                                     Create an account?
@@ -70,7 +83,7 @@
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -83,18 +96,18 @@
                             <ul class="order-table">
                                 <li>Product <span>Total</span></li>
                                 <?php
-                                foreach ($product->getDataFromTable('cart') as $item) :
-                                    $cart = $product->getProductById($item['product_id']);
+                                foreach ($_SESSION['cart'] ?? [] as $item) :
+                                    $cart = $product->getProductById($item);
                                     array_map(function ($item) {
                                 ?>
-                                        <li class="fw-normal"><?php echo $item['product_name'] ?> x 1 <span>$<?php echo $item['product_price'] ?></span></li>
+                                        <li class="fw-normal"><?php echo $item['product_name'] ?> <span>$<?php echo $item['product_price'] ?></span></li>
                                 <?php
                                     }, $cart);
 
                                 endforeach;
                                 ?>
-                                <li class="fw-normal">Subtotal <span>$<?php echo $_COOKIE['subtotal'] ?? 0; ?></span></li>
-                                <li class="total-price">Total <span>$<?php echo  $_COOKIE['subtotal'] ?? 0; ?></span></li>
+                                <li class="fw-normal">Subtotal <span>$<?php echo $_SESSION['subtotal'] ?? 0; ?></span></li>
+                                <li class="total-price">Total <span>$<?php echo  $_SESSION['subtotal'] ?? 0; ?></span></li>
                             </ul>
                             <div class="payment-check">
                                 <div class="pc-item">

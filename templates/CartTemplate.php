@@ -32,7 +32,7 @@
                          <tbody>
                              <!-- cart item -->
                              <?php
-                                foreach ($_SESSION['cart'] as $item) :
+                                foreach ($_SESSION['cart'] ?? [] as $item) :
                                     $cart = $product->getProductById($item);
                                     $subtotal[] = array_map(function ($product) {
                                 ?>
@@ -42,26 +42,6 @@
                                              <h5 style="margin-left: 1em;"><?php echo $product['product_name']; ?></h5>
                                          </td>
                                          <td class="p-price first-row">$<?php echo $product['product_price']; ?></td>
-                                         <!-- <td class="qua-col first-row">
-                                             <div class="quantity">
-                                                 <div class="pro-qty">
-                                                     <button class="  qtybtn qty-down bg-transparent border-0" data-id="
-                                                     <?php 
-                                                        //echo $product['product_id'] ?? '0'; 
-                                                     ?>">-</button>
-                                                     <input type="text" class="qty-input" value="1" data-id="
-                                                     <?php 
-                                                        //echo $product['product_id'] ?? '0'; 
-                                                     ?>">
-                                                     <button class="qtybtn qty-up bg-transparent border-0" data-id="
-                                                     <?php 
-                                                        //echo $product['product_id'] ?? 0; 
-                                                     ?>
-                                                     ">+</button>
-                                                 </div>
-                                             </div>
-                                         </td> -->
-                                         <!-- <td class="total-price first-row">$ <span class="product-total-price" data-id="<?php //echo $product['product_id'] ?? '0'; ?>"><?php //echo $product['product_price']; ?></span></td> -->
                                          <td class="close-td first-row">
                                              <form method="post">
                                                  <input type="hidden" value="<?php echo $product['product_id']; ?>" name="product_id">
@@ -69,7 +49,6 @@
                                          </td>
                                      </tr>
                              <?php
-                                        
                                         return $product['product_price'];
                                     }, $cart);
                                 endforeach; ?>

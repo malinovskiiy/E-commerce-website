@@ -41,25 +41,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <form method="post">
                                         <input type="hidden" name="product_id" value="<?php echo $item['product_id']; ?>">
                                         <?php
-                                        // if (in_array($item['product_id'], $Cart->getCartId($product->getDataFromTable('cart')) ?? [])) {
-                                        //     echo '<a href="#" style="pointer-events: none; background: green;" onclick="this.parentNode.submit();" name="product_add_to_cart"><i class="icon_bag_alt"></i></a>';
-                                        // } else {
-                                        //     echo '<a href="#" style="cursor: pointer;" onclick="this.parentNode.submit();" name="product_add_to_cart"><i class="icon_bag_alt"></i></a>';
-                                        // }
+
+                                        if(in_array($item['product_id'], $_SESSION['cart'] ?? [])){
+                                            echo '<button type="submit" class="bg-success text-white border-0" style="pointer-events: none;" name="product_add_to_cart"><i class="icon_bag_alt"></i></button>';
+                                        } else {
+                                            echo '<button type="submit" class="bg-warning text-white border-0" name="product_add_to_cart"><i class="icon_bag_alt"></i></button>';
+                                        }
                                         ?>
-                                        <button type="submit" class="bg-warning text-white border-0" name="product_add_to_cart"><i class="icon_bag_alt"></i></button>
+                                        
 
                                         
                                     </form>
                                 </li>
                                 <li class="quick-view">
-                                <a href="#">+ Add to cart</a>
+                                
                                 <?php
-                                        //if (in_array($item['product_id'], $Cart->getCartId($product->getDataFromTable('cart')) ?? [])) {
-                                        //    echo '<a href="#" style="pointer-events: none;">In the cart</a>';
-                                        //} else {
-                                        //    echo '<a href="#">+ Add to cart</a>';
-                                        //}
+                                        if(in_array($item['product_id'], $_SESSION['cart'] ?? [])){
+                                            echo '<a href="#" style="pointer-events: none;">In the cart</a>';
+                                        } else {
+                                            echo '<a href="#">+ Add to cart</a>';
+                                        }
                                         ?>
                                     
                                 </li>

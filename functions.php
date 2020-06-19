@@ -19,7 +19,7 @@ $product_array = $product->getDataFromTable('product');
 $Cart = new Cart($db);
 
 // Calculate subtotal
-foreach ($_SESSION['cart'] as $item){
+foreach ($_SESSION['cart'] ?? [] as $item){
     $cart = $product->getProductById($item);
     $subtotal[] = array_map(function ($product) {
         return $product['product_price'];
