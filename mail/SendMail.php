@@ -1,26 +1,34 @@
 <?php
+
+    /*
+    * Script which sends emails
+    */ 
+
+
     session_start();
 
+    // Database connection
     require_once '../database/Product.php';
     require_once '../database/DBController.php';
     $db = new DBController();
     $product = new Product($db);
 
+    // For invoice date
     date_default_timezone_set('Asia/Barnaul');
 
-// Script which sending emails
-
+    // Template directories
     $template_file = "./MailTemplate.php";
     $product_template = "./MailProductTemplate.php";
 
-
+    // Email settings
     $email_to = $_POST['email'];
     $subject = "Your order";
 
-    // $product_item = file_get_contents($product_template);
+    // Product item
     $product_item = "";
 
 
+    // Fill invoice with session products
     foreach ($_SESSION['cart'] ?? [] as $item){
         $cart = $product->getProductById($item);
 
@@ -38,6 +46,7 @@
         }
     }
 
+    // Set variables in email template
     $swap_var = array(
         "{NAME}" => $_SESSION['user']['username'] ?? 'User',
         "{ADDRESS}" => $_POST['street'],
@@ -48,10 +57,12 @@
         "{PRODUCTS}" => $product_item,
         "{SUBTOTAL}" => $_SESSION['subtotal'],
     );
-    
+
+    // Headers
     $headers = "From: Pillow Mart <info@pillowmart.com>\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
 
     if(file_exists($template_file)){
         $message = file_get_contents($template_file);
@@ -59,15 +70,19 @@
         die("unable to locate template");
     }
 
+    // Swap variables in $swap_arr
     foreach(array_keys($swap_var) as $key){
         if(strlen($key) > 2 && trim($key) != "")
             $message = str_replace($key, $swap_var[$key], $message);
     }
     
-
+    // Mail function
     mail($email_to, $subject, $message, $headers);
+
+    // Clear cart when checkout
     unset($_SESSION['cart']);
 
+    // Redirect to 'Thank you' page
     header('Location: ../order_info.php');
     
     
