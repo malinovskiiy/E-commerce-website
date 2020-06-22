@@ -70,7 +70,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 </ul>
                             </div>
                             <div class="pi-text">
-                                <div class="catagory-name"><?php echo $item['product_category'] ?></div>
+                                <div class="catagory-name"><?php // Divide brand class by capital letter
+                                // Because in database we use one word like 'TommyHilfiger'
+                                // to indicate brand
+                                echo implode(' ', preg_split('/(?=[A-Z])/', $item['product_brand']));?></div>
                                 <a href="#">
                                     <h5><?php echo $item['product_name'] ?></h5>
                                 </a>
