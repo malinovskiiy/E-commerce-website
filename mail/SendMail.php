@@ -66,6 +66,7 @@
     
 
     mail($email_to, $subject, $message, $headers);
+    unset($_SESSION['cart']);
 
     header('Location: ../order_info.php');
     
