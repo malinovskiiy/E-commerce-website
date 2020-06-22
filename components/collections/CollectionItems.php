@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </ul>
                         </div>
                         <div class="pi-text">
-                            <div class="category-name">
+                            <div class="category-name text-black-50">
                                 <?php
 
                                 // Divide brand class by capital letter
