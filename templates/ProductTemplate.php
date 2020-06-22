@@ -68,21 +68,16 @@ foreach ($product->getDataFromTable('product') as $item) :
                                         </div>
                                     </div>
                                     <div class="quantity">
-                                        <!-- <div class="pro-qty">
-                                            <button class=" qtybtn qty-down bg-transparent border-0" data-id="<?php //echo $item['product_id'] ?? '0'; ?>">-</button>
-                                            <input type="text" value="1">
-                                            <button class="qtybtn qty-up bg-transparent border-0" data-id="<?php // echo $item['product_id'] ?? '0'; ?>">+</button>
-                                        </div> -->
                                         <form method="post">
                                             <input type="hidden" name="product_id" value="<?php echo $item['product_id']; ?>">
                                             <?php
-                                            //if (in_array($item['product_id'], $Cart->getCartId($product->getDataFromTable('cart')) ?? [])) {
-                                              //  echo '<a href="#" style="pointer-events: none; background: green" onclick="this.parentNode.submit();" name="product_add_to_cart" class="primary-btn pd-cart">In the cart</a>';
-                                            //} else {
-                                             //   echo '<a href="#" style="cursor: pointer;" onclick="this.parentNode.submit();" name="product_add_to_cart" class="primary-btn pd-cart">Add To Cart</a>';
-                                           // }
+                                            if (in_array($item['product_id'], $_SESSION['cart'] ?? [])) {
+                                                echo '<a href="#" style="pointer-events: none; background: green" onclick="this.parentNode.submit();" name="product_add_to_cart" class="primary-btn pd-cart">In the cart</a>';
+                                            } else {
+                                                echo '<a href="#" style="cursor: pointer;" onclick="this.parentNode.submit();" name="product_add_to_cart" class="primary-btn pd-cart">Add To Cart</a>';
+                                            }
                                             ?>
-                                            <a href="#" style="cursor: pointer;" onclick="this.parentNode.submit();" name="product_add_to_cart" class="primary-btn pd-cart">Add To Cart</a>
+                                            
                                         </form>
 
                                     </div>
