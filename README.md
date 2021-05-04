@@ -1,6 +1,6 @@
 # E-commerce-website
   E-commerce website made with pure php
-  Finally i did it!
+ 
 
 # Functionality:
 
