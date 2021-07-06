@@ -55,16 +55,4 @@ class Cart
     }
 
 
-    // To made code clean it's better to put delete item functionality 
-    // in this function (TODO)
-    //
-    // public function deleteCartItem($itemId = null, $cartArray)
-    // {
-    //     if ($itemId != null && isset($cartArray)) {
-    //
-    //          some code....
-    //
-    //         header("Location: " . $_SERVER['PHP_SELF']);       
-    //     }
-    // }
 }

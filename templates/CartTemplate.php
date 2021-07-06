@@ -24,8 +24,7 @@
                                  <th>Image</th>
                                  <th class="p-name" style="padding-left: 1em;">Product Name</th>
                                  <th>Price</th>
-                                 <!-- <th>Quantity</th> -->
-                                 <!-- <th>Total</th> -->
+                                 
                                  <th><i class="ti-close"></i></th>
                              </tr>
                          </thead>

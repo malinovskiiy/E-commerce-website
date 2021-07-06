@@ -13,8 +13,6 @@ $product = new Product($db);
 
 $product_array = $product->getDataFromTable('product');
 
-
-
 // Cart object
 $Cart = new Cart($db);
 

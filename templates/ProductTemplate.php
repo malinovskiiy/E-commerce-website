@@ -50,7 +50,7 @@ foreach ($product->getDataFromTable('product') as $item) :
                             <div class="col-lg-6">
                                 <div class="product-details">
                                     <div class="pd-title">
-                                        <span><?php echo $item['product_brand']; ?></span>
+                                        <span><?php echo implode(' ', preg_split('/(?=[A-Z])/', $item['product_brand'])); ?></span>
                                         <h3><?php echo $item['product_name']; ?></h3>
                                         <a href="#" class="heart-icon"><i class="icon_heart_alt"></i></a>
                                     </div>

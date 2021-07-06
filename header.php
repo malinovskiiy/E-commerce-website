@@ -6,7 +6,7 @@
     
 ?>
 <!DOCTYPE html>
-<html lang="zxx">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -122,7 +122,7 @@
                         <ul class="depart-hover">
                             <li class="active"><a href="./womenCollection.php">Women’s Clothing</a></li>
                             <li><a href="./menCollection.php">Men’s Clothing</a></li>
-                            <li><a href="./kidsCollection.php">Kid's Clothing</a></li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                             <ul class="dropdown">
                                 <li><a href="./menCollection.php">Men's</a></li>
                                 <li><a href="./womenCollection.php">Women's</a></li>
-                                <li><a href="./kidsCollection.php">Kid's</a></li>
+                               
                             </ul>
                         </li>
                         <li><a href="./blog.php">Blog</a></li>
