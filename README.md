@@ -5,14 +5,18 @@
 # Functionality:
 
 * Fetching data from mysql database
-* Filter products by brand, by category, by price, by color
+* Filter products by brand, by category, by color
 * Sorting items by price in shop section
 * Adding product to the cart (using php sessions)
 * Login and Authentication system
 * Checkout fuhnctionality(which data will affect email invoice)
-* Sending responsive multibrowser custom html email invoice(If you look on code of this email... You would be probably scared), 
-  which based on cart items
+* Sending responsive multibrowser custom html email invoice, which is based on cart items
 
+
+# Administration:
+
+* Fetching products from database
+* Create, update, delete admin functionality
 
 
 
