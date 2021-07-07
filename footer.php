@@ -33,8 +33,8 @@
                     <div class="footer-widget">
                         <h5>My Account</h5>
                         <ul>
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="./profile.php">My Account</a></li>
+                            <li><a href="./contact.php">Contact</a></li>
                             <li><a href="./cart.php">Shopping Cart</a></li>
                             <li><a href="./shop.php">Shop</a></li>
                         </ul>
