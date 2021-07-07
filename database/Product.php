@@ -45,6 +45,10 @@ class Product
         $this->db->connection->query("INSERT INTO `product` (`product_id`, `product_name`, `product_price`, `product_brand`, `product_category`, `product_image`, `product_color`, `product_info`, `product_register_time`) VALUES (NULL, '$name', '$price', '$brand', '$category', '$image', '$color', '$info', current_timestamp())");
     }
 
+    public function editProduct($product_id, $name, $price, $brand, $category, $image, $color, $info){
+        $this->db->connection->query("UPDATE `product` SET `product_name` = '$name', `product_price` = '$price', `product_brand` = '$brand', `product_category` = '$category', `product_image` = '$image', `product_color` = '$color', `product_info` = '$info' WHERE `product`.`product_id` = $product_id");
+    }
+
     public function deleteProduct($product_id){
         $this->db->connection->query("DELETE FROM `product` WHERE `product_id` = '$product_id'");
     }

@@ -117,7 +117,7 @@
                     <td>' . $item['product_color'] . '</td>
                     <td><img src="../' . $item['product_image'] . '" alt="product" width="100" height="100"></td>
                     <td>' . $item['product_info'] . '</td>
-                    <td> <a href="#" class="btn btn-primary text-white">Edit</a> </td>
+                    <td> <a href="./edit-item.php?id='. $item['product_id'] .'" class="btn btn-warning text-white">Edit</a> </td>
                     <td> <a href="./actions/DeleteItem.php?id='. $item['product_id'] .'" class="btn btn-danger text-white">Delete</a> </td>
                 </tr>
                 ';

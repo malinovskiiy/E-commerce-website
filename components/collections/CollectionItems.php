@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="col-lg-9 order-1 order-lg-2">
     <div class="product-show-option">
         <div class="row">
-            <div class="col-lg-7 col-md-7">
+            <div class="col-lg-3 col-md-3">
                 <div class="select-option">
                     <select class="sorting-price form-control">
                         <option value="" data-sort-value="original-order">Default</option>
