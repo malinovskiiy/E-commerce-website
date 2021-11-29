@@ -9,7 +9,7 @@
 * Sorting items by price in shop section
 * Adding product to the cart (using php sessions)
 * Login and Authentication system
-* Checkout fuhnctionality(which data will affect email invoice)
+* Checkout functionality(which data will affect email invoice)
 * Sending responsive multibrowser custom html email invoice, which is based on cart items
 
 

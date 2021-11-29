@@ -3,7 +3,7 @@
 session_start();
 
 if($_SESSION['user']['role'] != 1){
-    header('Location: ./index.php'); 
+    header('Location: ../index.php'); 
 }
 
 // Require database connection 
