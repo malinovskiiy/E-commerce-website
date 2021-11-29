@@ -4,15 +4,26 @@ $brands = array_unique($product->getColumnValues('product', 'product_brand'), SO
 
 $colors = array_unique($product->getColumnValues('product', 'product_color'), SORT_REGULAR);
 
+$types = array_unique($product->getColumnValues('product', 'product_type'), SORT_REGULAR);
+
 ?>
 
 <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 products-sidebar-filter">
     <div class="filter-widget">
         <h4 class="fw-title">Categories</h4>
-        <ul class="filter-catagories button-group" data-filter-group="category">
+        <ul class="filter-catagories button-group" data-filter-group="type">
             <button data-filter="*" class="btn btn-light ">All categories</button>
-            <button data-filter=".Men" class="btn btn-light ">Men</button>
-            <button data-filter=".Women" class="btn btn-light">Women</button>
+            
+
+            <?php
+
+                foreach($types as $type){
+                    echo '
+                    <button class="bc-item btn btn-light" data-filter=".'. $type['product_type'] .'">  '. implode(' ', preg_split('/(?=[A-Z])/', $type['product_type'])) .'</button>
+                    ';
+                }   
+
+            ?>
             
         </ul>
     </div>
@@ -36,7 +47,7 @@ $colors = array_unique($product->getColumnValues('product', 'product_color'), SO
 
         </div>
     </div>
-   
+    
     
 
     <div class="filter-widget">
@@ -58,10 +69,7 @@ $colors = array_unique($product->getColumnValues('product', 'product_color'), SO
                 }
                 
                 ?>
-                
-       
             
-              
         </div>
     </div>
 </div>

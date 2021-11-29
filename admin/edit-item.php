@@ -6,7 +6,6 @@ $columns = $product->getColumnsFromTable('product');
 
 // Remove register time and id field from array(send by default)
 array_shift($columns);
-array_pop($columns);
 
 // This function is default in PHP 8 but in PHP 7 you should write it manually
 function str_contains($haystack, $needle) {

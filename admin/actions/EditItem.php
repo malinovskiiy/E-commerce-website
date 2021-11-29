@@ -18,6 +18,7 @@ $image = $_FILES['image'];
 $color = $_POST['color'];
 $info = $_POST['info'];
 $product_id = $_POST['product_id'];
+$type = $_POST['type'];
 
 // Path where images will be stored
 $path = "../../img/products/" . $_FILES['image']['name'];
@@ -29,7 +30,7 @@ move_uploaded_file($_FILES['image']['tmp_name'], $path);
 $image_path = str_replace("../.", '', $path);
 
 
-$product->editProduct($product_id, $name, $price, $brand, $category, $image_path, $color, $info);
+$product->editProduct($product_id, $name, $price, $brand, $category, $image_path, $color, $info, $type);
 
 
 

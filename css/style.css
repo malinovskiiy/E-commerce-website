@@ -1890,6 +1890,14 @@ ol {
 	background: #DC3232;
 }
 
+.filter-widget .fw-color-choose .cs-item label.cs-white:before {
+	background: white;
+}
+
+.filter-widget .fw-color-choose .cs-item label.cs-grey:before {
+	background: grey;
+}
+
 .filter-widget .fw-color-choose .cs-item label.cs-green:before {
 	background: #81D742;
 }
@@ -1901,6 +1909,7 @@ ol {
 	height: 18px;
 	width: 18px;
 	background: #252525;
+	border: 1px solid lightgrey;
 	border-radius: 50%;
 	content: "";
 }

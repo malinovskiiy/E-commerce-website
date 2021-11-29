@@ -9,7 +9,7 @@ $(document).ready(function () {
 
     $('.sorting-price').on('change', function(){
         var sortValue = $('.sorting-price option:selected').attr('data-sort-value');
-        console.log(sortValue);
+        // Price down is not working TODO!!!
         $grid.isotope({ sortBy: sortValue });
     })
 

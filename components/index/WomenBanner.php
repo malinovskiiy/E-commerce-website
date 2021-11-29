@@ -25,14 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
             </div>
             <div class="col-lg-8 offset-lg-1">
-                <div class="filter-control">
+                <!-- <div class="filter-control">
                     <ul>
                         <li class="active">Clothings</li>
                         <li>HandBag</li>
                         <li>Shoes</li>
                         <li>Accessories</li>
                     </ul>
-                </div>
+                </div> -->
                 <div class="product-slider owl-carousel">
                     <?php foreach ($women_array as $item) : ?>
                         <div class="product-item">

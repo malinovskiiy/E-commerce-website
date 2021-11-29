@@ -5,6 +5,7 @@ require './database/DBController.php';
 require './database/Product.php';
 require './database/Cart.php';
 
+
 // DBController object
 $db = new DBController(); 
 

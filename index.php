@@ -9,7 +9,7 @@ include './components/index/HeroBanner.php';
 include './components/index/WomenBanner.php';
 // include './components/index/DealOfTheWeek.php';
 include './components/index/MenBanner.php';
-include './components/index/Blog.php';
+// include './components/index/Blog.php';
 include './components/common/PartnerLogos.php';
 
 // Footer

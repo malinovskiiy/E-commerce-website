@@ -38,14 +38,7 @@ foreach ($product->getDataFromTable('product') as $item) :
                                         <i class="fa fa-search-plus"></i>
                                     </div>
                                 </div>
-                                <div class="product-thumbs">
-                                    <div class="product-thumbs-track ps-slider owl-carousel">
-                                        <div class="pt active" data-imgbigurl="<?php echo $item['product_image']; ?>"><img src="<?php echo $item['product_image']; ?>" alt=""></div>
-                                        <div class="pt" data-imgbigurl="<?php echo $item['product_image']; ?>"><img src="<?php echo $item['product_image']; ?>" alt=""></div>
-                                        <div class="pt" data-imgbigurl="<?php echo $item['product_image']; ?>"><img src="<?php echo $item['product_image']; ?>" alt=""></div>
-                                        <div class="pt" data-imgbigurl="<?php echo $item['product_image']; ?>"><img src="<?php echo $item['product_image']; ?>" alt=""></div>
-                                    </div>
-                                </div>
+                               
                             </div>
                             <div class="col-lg-6">
                                 <div class="product-details">

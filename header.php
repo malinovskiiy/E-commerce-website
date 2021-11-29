@@ -48,7 +48,7 @@
                 <div class="ht-left">
                     <div class="mail-service">
                         <i class=" fa fa-envelope"></i>
-                        hello.colorlib@gmail.com
+                        shop@pillowmart.test
                     </div>
                     <div class="phone-service">
                         <i class=" fa fa-phone"></i>
@@ -137,16 +137,11 @@
                                
                             </ul>
                         </li>
-                        <li><a href="./blog.php">Blog</a></li>
                         <li><a href="./contact.php">Contact</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="dropdown">
-                                <li><a href="./blog-details.php">Blog Details</a></li>
-                                <li><a href="./cart.php">Shopping Cart</a></li>
-                                <li><a href="./checkout.php">Checkout</a></li>
                                 <li><a href="./faq.php">Faq</a></li>
-                                <li><a href="./register.php">Register</a></li>
-                                <li><a href="./login.php">Login</a></li>
+                                
                             </ul>
                         </li>
                     </ul>

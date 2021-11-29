@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="product-list">
         <div class="row grid">
             <?php foreach ($collection_items as $item) : ?>
-                <div class="col-lg-4 col-sm-6 grid-item <?php echo $item['product_brand'] ?> <?php echo $item['product_category'] ?> <?php echo $item['product_color'] ?>">
+                <div class="col-lg-4 col-sm-6 grid-item <?php echo $item['product_brand'] ?> <?php echo $item['product_category'] ?> <?php echo $item['product_color'] ?> <?php echo $item['product_type'] ?>">
                     <div class="product-item">
                         <div class="pi-pic">
                             <a href="<?php printf('./%s?product_id=%s', 'product.php', $item['product_id']); ?>"> <img src="<?php echo $item['product_image']; ?>" alt=""></a>
